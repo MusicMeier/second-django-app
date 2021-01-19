@@ -10,4 +10,7 @@ class Bear(models.Model):
 
 class PicnicBasket(models.Model):
   sandwiches = models.BooleanField()
-  bear = models.ForeignKey(Bear, on_delete=models.CASCADE)
+  bear = models.ForeignKey(Bear, related_name='picnicbaskets', on_delete=models.CASCADE)
+
+  def __str__(self):
+    return "{ sandwiches: %s}" %{self.sandwiches}
